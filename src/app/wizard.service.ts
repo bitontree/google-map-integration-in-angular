@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Wizard } from './google-map/google-map.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class WizardService {
-  public wizardData: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  public wizardData: BehaviorSubject<Wizard> = new BehaviorSubject<Wizard>({});
   constructor() { }
 
   updateWizardData(wizardData, key, data): void {

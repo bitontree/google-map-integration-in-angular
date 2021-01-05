@@ -38,3 +38,15 @@
   width: 24px;
   height: 24px;
 }
+
+.place-inputs {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
+}
+
+.auto-margin {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

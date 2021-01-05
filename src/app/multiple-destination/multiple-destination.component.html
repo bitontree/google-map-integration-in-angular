@@ -1,8 +1,6 @@
 <main class="main-content min-height">
-  <div class="form-section d-flex pt-5 flex-column">
-    <div class="from-wrap pt-5 mt-5 px-3 mx-auto text-center marginb-35">
-      <div class="mt-5 mb-4">
-      </div>
+  <div class="form-section place-inputs">
+    <div class="from-wrap auto-margin marginb-35">
       <div cdkDropList (cdkDropListDropped)="drop($event)">
         <div *ngFor="let destination of destinations; let i=index;">
           <app-places-autocomplete [place]="destination" [id]="i" (selectedPlaces)="getDestinations($event)" cdkDrag

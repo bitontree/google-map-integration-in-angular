@@ -10,7 +10,7 @@ export class GoogleMapComponent implements OnInit, AfterViewInit {
     @ViewChild('mapel') googlemaps: google.maps.Map;
     icon = 'assets/images/blue-marker2.png';
     homeicon = 'assets/images/home-marker.png';
-    center: any = null;
+    center = null;
     zoom = 18;
     title = 'google-map';
     markers = [];

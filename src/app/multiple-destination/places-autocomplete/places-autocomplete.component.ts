@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { WizardService } from '../../wizard.service';
 import { GoogleMapService } from '../../google-map/google-map.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Wizard, Markers } from '../../google-map/google-map.interface';
 @Component({
   selector: 'app-places-autocomplete',
   templateUrl: './places-autocomplete.component.html',
@@ -14,8 +15,7 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
   @Output() selectedPlaces = new EventEmitter<any>();
   @Output() deletePlace = new EventEmitter<any>();
   @ViewChild('pacel') inputEl: ElementRef;
-  wizardData: any;
-  homeLatLng: any;
+  wizardData: Wizard;
   constructor(
     private googleMapService: GoogleMapService,
     private wizardService: WizardService,
@@ -27,7 +27,7 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.googleMapService.markers.subscribe((markers: any) => {
+    this.googleMapService.markers.subscribe((markers: Markers[]) => {
       this.markers = markers;
     });
     this.initMap();
@@ -93,32 +93,5 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
         return false;
       }
     }
-  }
-
-  geocodeLatLng(geocoder: google.maps.Geocoder): void {
-    const latlng = {
-      lat: parseFloat(this.homeLatLng.lat),
-      lng: parseFloat(this.homeLatLng.lng)
-    };
-    geocoder.geocode(
-      { location: latlng },
-      (
-        results: google.maps.GeocoderResult[],
-        status: google.maps.GeocoderStatus
-      ) => {
-        if (status === 'OK') {
-          if (results[0]) {
-          } else {
-            this.snackBar.open('No results found', 'close', {
-              duration: 2000,
-            });
-          }
-        } else {
-          this.snackBar.open('Geocoder failed due to: ' + status, 'close', {
-            duration: 2000,
-          });
-        }
-      }
-    );
   }
 }

@@ -14,6 +14,7 @@ import { MultipleDestinationComponent } from './multiple-destination/multiple-de
 import { HttpClientModule } from '@angular/common/http';
 import { PlacesAutocompleteComponent } from './multiple-destination/places-autocomplete/places-autocomplete.component';
 import { MaterialModule } from './material.module';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDMLPt-tr9U9iJonMhC0DHCaDk9Pez6sz4'
+      apiKey: environment.googleApiKey
     }),
     GoogleMapsModule,
     FormsModule,

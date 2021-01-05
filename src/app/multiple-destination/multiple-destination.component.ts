@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { GoogleMapService } from '../google-map/google-map.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { WizardService } from '../wizard.service';
+import { Wizard } from '../google-map/google-map.interface';
 @Component({
   selector: 'app-multiple-destination',
   templateUrl: './multiple-destination.component.html',
@@ -10,7 +11,7 @@ import { WizardService } from '../wizard.service';
 export class MultipleDestinationComponent implements OnInit, OnDestroy {
   key = 'destinations';
   destinations = [null];
-  wizardData: any;
+  wizardData: Wizard;
   constructor(
     private googleMapService: GoogleMapService,
     private wizardService: WizardService
@@ -59,7 +60,7 @@ export class MultipleDestinationComponent implements OnInit, OnDestroy {
     }
   }
   displayAddButton(): boolean {           // Function to show add destination button only when there is atleast one location entered
-    const destination = this.destinations.filter((dest: any) => dest);
+    const destination = this.destinations.filter((dest: Wizard) => dest);
     if (destination && destination.length > 0) {
       return false;
     }

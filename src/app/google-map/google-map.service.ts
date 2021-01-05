@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+import { Markers, Position } from './google-map.interface';
 @Injectable({
     providedIn: 'root'
 })
 export class GoogleMapService {
-    public markers: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-    public currentLocation: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    public markers: BehaviorSubject<Markers[]> = new BehaviorSubject<Markers[]>([]);
+    public currentLocation: BehaviorSubject<Position> = new BehaviorSubject<Position>(null);
     constructor() { }
 
 
