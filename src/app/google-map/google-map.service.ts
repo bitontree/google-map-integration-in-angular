@@ -10,9 +10,9 @@ export class GoogleMapService {
     constructor() { }
 
 
-    updateMarkers(markers: any) {
+    updateMarkers(markers: any): void {
         if (!Array.isArray(markers)) {
-            markers = [markers]
+            markers = [markers];
         }
         const currentLocation = this.currentLocation.getValue();
         const updatedMarkers = [currentLocation, ...markers].map(marker => ({ position: marker }));

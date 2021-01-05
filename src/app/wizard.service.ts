@@ -7,10 +7,10 @@ export class WizardService {
   public wizardData: BehaviorSubject<any> = new BehaviorSubject<any>({});
   constructor() { }
 
-  updateWizardData(wizardData, key, data) {
+  updateWizardData(wizardData, key, data): void {
     let updatedData = {};
     wizardData[key] = data;
-    updatedData = wizardData
+    updatedData = wizardData;
     this.wizardData.next(updatedData);
   }
 }

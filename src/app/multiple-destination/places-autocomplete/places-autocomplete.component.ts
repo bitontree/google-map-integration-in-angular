@@ -11,25 +11,24 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
   markers = [];
   @Input() place;
   @Input() id;
-  @Input() key;
   @Output() selectedPlaces = new EventEmitter<any>();
   @Output() deletePlace = new EventEmitter<any>();
   @ViewChild('pacel') inputEl: ElementRef;
   wizardData: any;
   homeLatLng: any;
-  constructor(private _googleMapService: GoogleMapService, private _wizardService: WizardService, private _snackBar: MatSnackBar) { }
-  ngOnInit() {
-    this._wizardService.wizardData.subscribe(data => {
+  constructor(
+    private googleMapService: GoogleMapService,
+    private wizardService: WizardService,
+    private snackBar: MatSnackBar) { }
+  ngOnInit(): void {
+    this.wizardService.wizardData.subscribe(data => {
       this.wizardData = data;
-      if (this.wizardData[this.key]) {
-        this.place = this.wizardData[this.key];
-      }
     });
   }
 
   ngAfterViewInit(): void {
-    this._googleMapService.markers.subscribe((markers: any) => {
-      this.markers = markers
+    this.googleMapService.markers.subscribe((markers: any) => {
+      this.markers = markers;
     });
     this.initMap();
   }
@@ -39,21 +38,13 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
       types: ['(cities)'],
     };
     const autocomplete = new google.maps.places.Autocomplete(
-      <HTMLInputElement>this.inputEl.nativeElement,
+      this.inputEl.nativeElement as HTMLInputElement,
       options
     ); // Set the data fields to return when the user selects a place.
     const geocoder = new google.maps.Geocoder();
-    if (this.key) {
-      if (!this.markers[this.markers.length - 1].location) {
-        this.homeLatLng = this._googleMapService.currentLocation.getValue();
-        this.addMarker(this.homeLatLng.lat, this.homeLatLng.lng);
-        const geocoder = new google.maps.Geocoder();
-        this.geocodeLatLng(geocoder);
-      }
-    }
     if (this.place) {
       autocomplete.setValues(this.place);
-      this.inputEl.nativeElement.value = this.place.title
+      this.inputEl.nativeElement.value = this.place.title;
     }
     autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
     autocomplete.addListener('place_changed', () => {
@@ -61,68 +52,69 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
       const lng = place.geometry.location.lng();
       const lat = place.geometry.location.lat();
       const title = place.address_components.reduce((name, currentValue) => {
-        if (name == '') return currentValue.long_name
-        if (!name.includes(currentValue.long_name)) return name + ', ' + currentValue.long_name;
-        return name
-      }, "")
-      let data = {
+        if (name === '') { return currentValue.long_name; }
+        if (!name.includes(currentValue.long_name)) { return name + ', ' + currentValue.long_name; }
+        return name;
+      }, '');
+      const data = {
         name: place.name,
-        title: title,
+        title,
         position: {
-          lat: lat,
-          lng: lng
+          lat,
+          lng
         }
-      }
+      };
       this.addMarker(lat, lng);
       this.selectedPlaces.emit({ id: this.id, data });
       if (!place.geometry) {
-        window.alert("No details available for input: '" + place.name + "'");
+        window.alert('No details available for input: \'' + place.name + '\'');
         return;
       }
     });
   }
-  addMarker(lat, lng) {
+  addMarker(lat, lng): void {
     this.markers.push({
       position: {
-        lat: lat,
-        lng: lng,
+        lat,
+        lng,
       },
     });
-    this._googleMapService.markers.next(this.markers);
+    this.googleMapService.markers.next(this.markers);
   }
-  deleteInput() {
-    this.deletePlace.emit(this.id);
+  deleteInput(): void {                    // Emits an output to parent component(MultipleDestinationsComponent)
+    this.deletePlace.emit(this.id);  // with index of deleted destinaion element from the array
   }
 
-  displayRemoveIcon() {
-    if (this.wizardData['destinations']) {
-      if (this.wizardData['destinations'].length >= 1) {
-        return true
+  displayRemoveIcon(): boolean {                        // To display remove destination icon ( x ) only when
+    if (this.wizardData.destinations) {     // there are more than one destinations
+      if (this.wizardData.destinations.length >= 1) {
+        return true;
       } else {
-        return false
+        return false;
       }
     }
   }
-  geocodeLatLng(geocoder: google.maps.Geocoder) {
+
+  geocodeLatLng(geocoder: google.maps.Geocoder): void {
     const latlng = {
       lat: parseFloat(this.homeLatLng.lat),
       lng: parseFloat(this.homeLatLng.lng)
-    }
+    };
     geocoder.geocode(
       { location: latlng },
       (
         results: google.maps.GeocoderResult[],
         status: google.maps.GeocoderStatus
       ) => {
-        if (status === "OK") {
+        if (status === 'OK') {
           if (results[0]) {
           } else {
-            this._snackBar.open('No results found', 'close', {
+            this.snackBar.open('No results found', 'close', {
               duration: 2000,
             });
           }
         } else {
-          this._snackBar.open('Geocoder failed due to: ' + status, 'close', {
+          this.snackBar.open('Geocoder failed due to: ' + status, 'close', {
             duration: 2000,
           });
         }

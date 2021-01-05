@@ -11,13 +11,14 @@ export class MultipleDestinationComponent implements OnInit, OnDestroy {
   key = 'destinations';
   destinations = [null];
   wizardData: any;
-  constructor(private _googleMapService: GoogleMapService,
-    private _wizardService: WizardService
+  constructor(
+    private googleMapService: GoogleMapService,
+    private wizardService: WizardService
   ) { }
 
   ngOnInit(): void {
-    this._wizardService.wizardData.subscribe(data => {
-      this.wizardData = data;
+    this.wizardService.wizardData.subscribe(data => {     // Subscribed to wizardData behaviour subject and assigning
+      this.wizardData = data;                              // the object to component variable wizardData
       if (this.wizardData[this.key]) {
         this.destinations = this.wizardData[this.key];
       }
@@ -28,38 +29,40 @@ export class MultipleDestinationComponent implements OnInit, OnDestroy {
     this.destinations = this.destinations.filter(destination => destination);
   }
 
-  getDestinations({ id, data }) {
-    this.destinations[id] = data;
+  getDestinations({ id, data }): void {       // Updating the destination & marker according to each IDs getting
+    this.destinations[id] = data;       // from child component (PlacesAutocomplete)
     this.updateMarker();
   }
-  addDestination() {
+  addDestination(): void {                    // To add a new destination
     this.destinations.push(null);
   }
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.destinations, event.previousIndex, event.currentIndex);
-    this.updateMarker()
+    this.updateMarker();
   }
 
-  updateMarker() {
+  updateMarker(): void {                    // To update the markers on google map with addition & deletion of destinations
     const markers = this.destinations.map(destination => {
       const lng = destination.position.lng;
       const lat = destination.position.lat;
       return { lat, lng };
-    })
+    });
     this.destinations = this.destinations.filter(destination => destination);
-    this._wizardService.updateWizardData(this.wizardData, this.key, this.destinations);
-    this._googleMapService.updateMarkers(markers);
+    this.wizardService.updateWizardData(this.wizardData, this.key, this.destinations);
+    this.googleMapService.updateMarkers(markers);
   }
-  deletePlace(index) {
-    this.destinations.splice(index, 1);
+  deletePlace(index): void {                     // Delete a destination according to ID getting from
+    this.destinations.splice(index, 1);    // child component(PlacesAutocomplete)
     this.updateMarker();
-    if (this.destinations.length === 0)
+    if (this.destinations.length === 0) {
       this.destinations = [null];
+    }
   }
-  displayAddButton() {               // function to show add destination button only when there is atleast one location entered
-    const destination = this.destinations.filter(destination => destination);
-    if (destination && destination.length > 0)
-      return false
-    else return true
+  displayAddButton(): boolean {           // Function to show add destination button only when there is atleast one location entered
+    const destination = this.destinations.filter((dest: any) => dest);
+    if (destination && destination.length > 0) {
+      return false;
+    }
+    else { return true; }
   }
 }

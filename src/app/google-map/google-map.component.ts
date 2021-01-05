@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { GoogleMapService } from './google-map.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { GoogleMapService } from './google-map.service';
     templateUrl: './google-map.component.html',
     styleUrls: ['./google-map.component.scss']
 })
-export class GoogleMapComponent implements OnInit {
+export class GoogleMapComponent implements OnInit, AfterViewInit {
     @ViewChild('mapel') googlemaps: google.maps.Map;
     icon = 'assets/images/blue-marker2.png';
     homeicon = 'assets/images/home-marker.png';
@@ -22,27 +22,27 @@ export class GoogleMapComponent implements OnInit {
     };
 
     constructor(
-        private _googleMapService: GoogleMapService) { }
+        private googleMapService: GoogleMapService) { }
 
     ngOnInit(): void {
-        const markers = this._googleMapService.markers.getValue();    //getting markers array  
+        const markers = this.googleMapService.markers.getValue();    // getting markers array
         if (Array.isArray(markers) && markers.length > 0) {
-            this._googleMapService.markers.next(markers);
+            this.googleMapService.markers.next(markers);
         } else {
-            navigator.geolocation.getCurrentPosition((position) => {   //using geolocation getting the  
-                let center = {                                         // current coordinates and passing into
+            navigator.geolocation.getCurrentPosition((position) => {   // using geolocation getting the
+                const center = {                                         // current coordinates and passing into
                     lat: position.coords.latitude,                     // current location
                     lng: position.coords.longitude,
                 };
-                this._googleMapService.currentLocation.next(center);
+                this.googleMapService.currentLocation.next(center);
                 this.addMarker(position.coords.latitude, position.coords.longitude);
             });
         }
         // this._wizardService.wizardData.next(data);
     }
 
-    ngAfterViewInit() {
-        this._googleMapService.markers.subscribe((markers) => {
+    ngAfterViewInit(): void {
+        this.googleMapService.markers.subscribe((markers) => {
             if (!markers || (Array.isArray(markers) && markers.length === 0)) {
                 return;
             }
@@ -70,20 +70,20 @@ export class GoogleMapComponent implements OnInit {
             this.googlemaps.fitBounds(bounds);
         });
         setTimeout(() => {
-            this._googleMapService.currentLocation.subscribe(
+            this.googleMapService.currentLocation.subscribe(
                 (center) => (this.center = center)
             );
         }, 100);
     }
 
-    addMarker(lat, lng) {                     //pushing the marker we got from current location into array of markers 
+    addMarker(lat, lng): void {                     // pushing the marker we got from current location into array of markers
         this.markers.push({
             location: 'home',
             position: {
-                lat: lat,
-                lng: lng,
+                lat,
+                lng,
             },
         });
-        this._googleMapService.markers.next(this.markers);
+        this.googleMapService.markers.next(this.markers);
     }
 }
