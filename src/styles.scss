@@ -1,1 +1,688 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+body {
+  color: #555555;
+  font-family: "Roboto", sans-serif;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  color: #555 !important;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #555 !important;
+}
+
+::placeholder {
+  color: #555 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+// .home-benner .startTrip {
+//   min-height: 100vh;
+//   background: url(../src/assets/images/background-img.png);
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-position: center;
+// }
+
+.h-50vh {
+  min-height: 50vh;
+}
+
+.btn_light {
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 19%);
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 5px 45px 5px 60px;
+  transition: 0.5s;
+  position: relative;
+  color: #555555;
+  background: #fff;
+}
+
+.btn_light:hover {
+  transform: translateY(-3px);
+}
+
+.btn_light span.plus-icon {
+  position: absolute;
+  left: 25px;
+  top: 0px;
+  line-height: 1;
+}
+
+span.plus-icon {
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: #087db2;
+  background: -webkit-linear-gradient(bottom, #087db2, #2eaae0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+span.plus-icon.x3 {
+  font-size: 80px;
+  line-height: 1.1;
+}
+
+.form-control {
+  border-radius: 15px;
+  height: 50px;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  border-color: #087db2;
+}
+
+.form-head {
+  font-size: 18px;
+}
+
+.form-progress-bar {
+  background: #e1e4e6;
+  height: 6px;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-progress-bar span.complete-form {
+  background: #31aee6;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  border-radius: 50px;
+}
+
+.h-100 {
+  min-height: 100vh;
+}
+
+.form-section .from-wrap {
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+}
+
+.steps_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background: -webkit-linear-gradient(top, #087db2, #2eaae0);
+  color: #fff !important;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.nextsteps-btn {
+  right: -15%;
+}
+
+.steps_btn.presteps-btn {
+  left: -15%;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group .marker-icon {
+  position: absolute;
+  left: 70px;
+  top: 10px;
+  font-size: 30px;
+  color: #087db2;
+  background: -webkit-linear-gradient(bottom, #087db2, #2eaae0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-group .cancel {
+  position: absolute;
+  right: 70px;
+  top: 10px;
+  font-size: 20px;
+  color: #ced4da;
+  cursor: pointer;
+  font-style: normal;
+}
+
+.form-group.top_line:after {
+  content: "";
+  position: absolute;
+  left: 80px;
+  top: -20px;
+  width: 1px;
+  height: 15px;
+  background: #ced4da;
+}
+
+#PersonModal .modal-content {
+  border: none;
+  border-radius: 25px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  outline: none !important;
+}
+
+.modal-backdrop.show {
+  opacity: 0.2;
+}
+
+.bottom-info .icon-wrap {
+  border: 1px solid #ced4da;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.bottom-info .box {
+  margin: 10px;
+  float: left;
+  text-align: center;
+}
+
+.bottom-info .icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box-wrap .person-box {
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 19%);
+  border-radius: 15px;
+  margin: 5px;
+  min-height: 175px;
+  cursor: pointer;
+}
+
+.date-wrap img {
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 19%);
+  border-radius: 15px;
+  padding: 5px 0;
+}
+
+.or {
+  position: relative;
+}
+
+.or:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 25%;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 1px;
+  background: #000;
+  opacity: 0.1;
+}
+
+.or span {
+  background: #fff;
+  display: inline-block;
+  padding: 5px 10px;
+  position: relative;
+  z-index: 1;
+  color: #ccc;
+}
+
+.trip-warp {
+  border-radius: 30px;
+  border: 1px solid #ced4da;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+
+// .trip-warp .content-wrap {
+//   background: url(../images/location-bg.png);
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
+// }
+
+.locations span {
+  padding: 3px 20px;
+  display: inline-block;
+  background: rgb(0 0 0 / 0.6);
+  margin-top: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 8px;
+  opacity: 0.8;
+}
+
+.icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.wrap-list .row:not(:last-child) {
+  border-bottom: 1px solid #ced4da;
+}
+
+.transportation-details {
+  position: relative;
+  overflow: hidden;
+}
+
+.transportation-details {
+  max-width: 250px;
+  border-radius: 20px;
+  border: 1px solid #ced4da;
+}
+
+.transportation-details.full-info {
+  max-width: 100%;
+}
+
+.transportation-details .transportation-info {
+  transition: 0.5s;
+  padding: 20px 0;
+  padding-right: 20px;
+}
+
+#accordion .card {
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  z-index: 1;
+}
+
+#accordion .card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgb(215 238 251);
+  border-bottom: none;
+  position: relative;
+}
+
+.transportation-details.full-info .transportation-info {
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+#accordion .btn-link {
+  color: #000;
+  width: calc(100% - 35px);
+}
+
+#accordion .btn-link i.fa-angle-up {
+  float: right;
+  color: #848483;
+  font-size: 23px;
+  line-height: 2;
+  transition: 0.3s;
+}
+
+#accordion .btn-link.collapsed i.fa-angle-up {
+  transform: rotate(180deg);
+}
+
+#accordion .card-header .delete_card {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#accordion .btn-link small {
+  color: #999;
+}
+
+.time_details {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: 0.5s;
+}
+
+.transportation-information {
+  max-width: 300px;
+  border-radius: 20px;
+  border: 1px solid #ced4da;
+  padding-left: 50px !important;
+}
+
+.transportation-information .icon-wrap {
+  border: 1px solid #ced4da;
+}
+
+.transportation-details.full-info .time_details,
+.modal .time_details {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  position: initial;
+}
+
+.locations-wrap {
+  color: #000;
+  position: relative;
+}
+
+.locations-wrap:after {
+  position: absolute;
+  content: "";
+  left: 72px;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  border-left: 2px dashed #32abe0;
+}
+
+.time_details strong {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.time_details strong.flight_logo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6132b1;
+}
+
+.transportation-details .toggle-menus {
+  position: absolute;
+  width: 25px;
+  height: 100%;
+  border-left: 1px solid #ced4da;
+  background: transparent;
+  top: 0;
+  right: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.transportation-details .toggle-menus i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  transition: 0.5s;
+}
+
+.transportation-details.full-info .toggle-menus i {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.time_details strong sup {
+  color: #999;
+}
+
+.time_details .line {
+  width: 100px;
+  background: #6e6b7e;
+  height: 3px;
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 50px;
+  position: relative;
+}
+
+.time_details .line i {
+  position: absolute;
+  top: -5px;
+  left: 49%;
+  width: 12px;
+  height: 12px;
+  background: #da0554;
+  border: 2px solid #fff;
+  border-radius: 10px;
+}
+
+.time_details .stops {
+  color: #da0554;
+}
+
+.time_details .stops span {
+  color: #555555;
+}
+
+.transportation-details .transportation-info.full-info .toggle-menus i {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.transportation-details .tick {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.bottom_card {
+  box-shadow: -1px 0 5px 1px rgb(0 0 0 / 19%);
+}
+
+.card-info {
+  max-width: 400px;
+  margin-left: auto;
+  font-size: 20px;
+  color: #000;
+  position: relative;
+  padding: 15px;
+  border-left: 1px solid #ced4da;
+  cursor: pointer;
+}
+
+#cartModal .modal-dialog {
+  max-width: 600px;
+  margin: 0 0 0 auto;
+  transition: 0s !important;
+  transform: none !important;
+  height: 100%;
+}
+
+td.data img {
+  margin: 0 2px;
+}
+
+#cartModal .modal-content {
+  position: absolute;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  overflow: auto;
+}
+
+.modal .table-responsive {
+  padding-left: 20px;
+}
+
+/*.datarow {
+    display: flex;
+    justify-content: space-between;
+}*/
+
+.row-head {
+  border: none;
+  position: relative;
+}
+
+td.data {
+  border: none !important;
+  min-width: 92px;
+  color: #000;
+}
+
+.datatable {
+  margin-left: 10% !important;
+  width: 90%;
+  position: relative;
+}
+
+.datatable:after {
+  position: absolute;
+  content: "";
+  left: -22px;
+  top: 21px;
+  height: 85%;
+  width: 1px;
+  border-left: 2px dashed #32abe0;
+}
+
+.datatable:before {
+  position: absolute;
+  content: "";
+  right: 92px;
+  top: 0;
+  height: 100%;
+  width: 92px;
+  background: rgb(237 237 237 / 40%);
+  pointer-events: none;
+}
+
+.datatable .row-head .icon-wrap {
+  background: #fff;
+  position: absolute;
+  left: -50px;
+  top: 20px;
+  border: 1px solid #dee2e6;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+table.datatable th {
+  padding-top: 2rem !important;
+  position: relative;
+}
+
+.table.datatable th:after {
+  content: "";
+  position: absolute;
+  left: -100px;
+  top: -1px;
+  width: 100px;
+  height: 1px;
+  background: #dee2e6;
+}
+
+.datatable .data .time_details {
+  font-size: 12px;
+}
+
+#cartModal .card-info {
+  max-width: 100%;
+  width: 100%;
+  border-left: 0px solid #ced4da;
+  background: #fff;
+}
+
+.card-info .count {
+  position: absolute;
+  width: 40px;
+  top: -20px;
+  height: 40px;
+  margin-left: -45px;
+  background: -webkit-linear-gradient(bottom, #5dccfe, #2eaae0);
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  border-radius: 50px;
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .box-wrap.w-75 {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 991px) {
+  header .nav-wrap a img {
+    width: 70px !important;
+  }
+
+  .time_details [class^="col"] {
+    text-align: center !important;
+  }
+
+  .steps_btn.nextsteps-btn {
+    right: 0;
+  }
+
+  .locations-wrap.w-75,
+  .time_details.w-75 {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+
+  .steps_btn.presteps-btn {
+    left: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .transportation-details,
+  .transportation-information {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    padding-left: 1.5rem !important;
+  }
+}

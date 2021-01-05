@@ -1,0 +1,45 @@
+.input-box {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  height: 45px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  font-family: Roboto;
+  border: none;
+  border-radius: 4px;
+  padding-left: 12px;
+}
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  /* border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff; */
+  font-family: Roboto;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.example-handle {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  color: #ccc;
+  cursor: move;
+  width: 24px;
+  height: 24px;
+}
