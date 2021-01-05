@@ -26,7 +26,7 @@ import { MaterialModule } from './material.module'
     AppRoutingModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDMLPt-tr9U9iJonMhC0DHCaDk9Pez6sz4'
+      apiKey: 'YOUR_API_KEY_HERE'
     }),
     GoogleMapsModule,
     FormsModule,

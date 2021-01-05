@@ -25,13 +25,13 @@ export class GoogleMapComponent implements OnInit {
         private _googleMapService: GoogleMapService) { }
 
     ngOnInit(): void {
-        const markers = this._googleMapService.markers.getValue();
+        const markers = this._googleMapService.markers.getValue();    //getting markers array  
         if (Array.isArray(markers) && markers.length > 0) {
             this._googleMapService.markers.next(markers);
         } else {
-            navigator.geolocation.getCurrentPosition((position) => {
-                let center = {
-                    lat: position.coords.latitude,
+            navigator.geolocation.getCurrentPosition((position) => {   //using geolocation getting the  
+                let center = {                                         // current coordinates and passing into
+                    lat: position.coords.latitude,                     // current location
                     lng: position.coords.longitude,
                 };
                 this._googleMapService.currentLocation.next(center);
@@ -76,7 +76,7 @@ export class GoogleMapComponent implements OnInit {
         }, 100);
     }
 
-    addMarker(lat, lng) {
+    addMarker(lat, lng) {                     //pushing the marker we got from current location into array of markers 
         this.markers.push({
             location: 'home',
             position: {

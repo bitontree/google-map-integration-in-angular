@@ -1,5 +1,4 @@
 <app-multiple-destination></app-multiple-destination>
-<!-- <div class="mt-1"> -->
 <google-map #mapel height="50%" width="100%" [zoom]="zoom" [center]="center">
   <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
     [options]="marker.options">
@@ -7,4 +6,3 @@
   <map-polyline [options]="polylineOptions">
   </map-polyline>
 </google-map>
-<!-- </div> -->

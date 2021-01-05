@@ -56,7 +56,7 @@ export class MultipleDestinationComponent implements OnInit, OnDestroy {
     if (this.destinations.length === 0)
       this.destinations = [null];
   }
-  displayAddButton() {
+  displayAddButton() {               // function to show add destination button only when there is atleast one location entered
     const destination = this.destinations.filter(destination => destination);
     if (destination && destination.length > 0)
       return false
