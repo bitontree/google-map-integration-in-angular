@@ -23,7 +23,6 @@
     "@angular/platform-browser": "~10.1.3",
     "@angular/platform-browser-dynamic": "~10.1.3",
     "@angular/router": "~10.1.3",
-    "bootstrap": "^3.4.1",
     "moment": "^2.29.1",
     "ngx-google-places-autocomplete": "^2.0.5",
     "rxjs": "~6.6.0",

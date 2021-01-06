@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { WizardService } from '../../wizard.service';
 import { GoogleMapService } from '../../google-map/google-map.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Wizard, Markers } from '../../google-map/google-map.interface';
+import { Wizard, Markers, SelectedPlaces } from '../../google-map/google-map.interface';
 @Component({
   selector: 'app-places-autocomplete',
   templateUrl: './places-autocomplete.component.html',
@@ -12,8 +12,8 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
   markers = [];
   @Input() place;
   @Input() id;
-  @Output() selectedPlaces = new EventEmitter<any>();
-  @Output() deletePlace = new EventEmitter<any>();
+  @Output() selectedPlaces = new EventEmitter<SelectedPlaces>();
+  @Output() deletePlace = new EventEmitter<number>();
   @ViewChild('pacel') inputEl: ElementRef;
   wizardData: Wizard;
   constructor(

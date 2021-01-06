@@ -17,3 +17,8 @@ export interface Position {
     lat: number;
     lng: number;
 }
+
+export interface SelectedPlaces {
+    id: number;
+    data: Destination;
+}
