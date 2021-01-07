@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlacesAutocompleteComponent } from './multiple-destination/places-autocomplete/places-autocomplete.component';
 import { MaterialModule } from './material.module';
 import { environment } from '../environments/environment';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    GooglePlaceModule
   ],
   providers: [GoogleMapService, WizardService],
   bootstrap: [AppComponent],

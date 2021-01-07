@@ -7,11 +7,13 @@ import { GoogleMapService } from './google-map.service';
     styleUrls: ['./google-map.component.scss']
 })
 export class GoogleMapComponent implements OnInit, AfterViewInit {
+    showFiller = false;
+    drawerOpen = false;
     @ViewChild('mapel') googlemaps: google.maps.Map;
     icon = 'assets/images/blue-marker2.png';
     homeicon = 'assets/images/home-marker.png';
-    center = null;
-    zoom = 18;
+    center: any = null;
+    zoom = 5;
     title = 'google-map';
     markers = [];
     polylineOptions = {
@@ -74,6 +76,10 @@ export class GoogleMapComponent implements OnInit, AfterViewInit {
                 (center) => (this.center = center)
             );
         }, 100);
+    }
+
+    drawerClicked(): void {
+        this.drawerOpen = !this.drawerOpen;
     }
 
     addMarker(lat, lng): void {                     // pushing the marker we got from current location into array of markers

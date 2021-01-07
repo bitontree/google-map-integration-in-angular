@@ -21,11 +21,11 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-box:last-child {
-  border: none;
-}
+// .dnd-item:last-child {
+//   border: none;
+// }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+.dnd-container.cdk-drop-list-dragging .dnd-item:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -49,4 +49,9 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.margin-5 {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }

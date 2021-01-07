@@ -1,0 +1,28 @@
+.example-container {
+  //   width: 500px;
+  height: 100vh;
+  //   border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  //   height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: 90px 0 0 10px;
+}
+
+.example-sidenav {
+  padding: 20px;
+  width: 25%;
+}
+
+.show-destinations {
+  background-color: white;
+  color: black;
+  z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 18px;
+}

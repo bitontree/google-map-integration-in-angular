@@ -30,7 +30,8 @@ export class MultipleDestinationComponent implements OnInit, OnDestroy {
     this.destinations = this.destinations.filter(destination => destination);
   }
 
-  getDestinations({ id, data }): void {       // Updating the destination & marker according to each IDs getting
+  getDestinations({ id, data }): void {
+    console.log('destinations', data);     // Updating the destination & marker according to each IDs getting
     this.destinations[id] = data;       // from child component (PlacesAutocomplete)
     this.updateMarker();
   }

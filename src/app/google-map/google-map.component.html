@@ -1,8 +1,24 @@
-<app-multiple-destination></app-multiple-destination>
-<google-map #mapel height="50%" width="100%" [zoom]="zoom" [center]="center">
-  <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
-    [options]="marker.options">
-  </map-marker>
-  <map-polyline [options]="polylineOptions">
-  </map-polyline>
-</google-map>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-multiple-destination></app-multiple-destination>
+
+    <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button> -->
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" class="show-destinations" mat-button (click)="drawer.toggle(); drawerClicked()">
+      <span *ngIf="drawerOpen == false">Add Destinations</span>
+      <span *ngIf="drawerOpen == true">Close Tab</span>
+    </button>
+  </div>
+  <google-map #mapel height="100%" width="100%" [zoom]="zoom" [center]="center">
+    <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+      [title]="marker.title" [options]="marker.options">
+    </map-marker>
+    <map-polyline [options]="polylineOptions">
+    </map-polyline>
+  </google-map>
+</mat-drawer-container>
