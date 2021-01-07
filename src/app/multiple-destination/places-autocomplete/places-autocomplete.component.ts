@@ -16,7 +16,6 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
   @Input() id;
   @Output() selectedPlaces = new EventEmitter<SelectedPlaces>();
   @Output() deletePlace = new EventEmitter<number>();
-  // @ViewChild('pacel') inputEl: ElementRef;
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
   wizardData: Wizard;
   options = {
@@ -36,48 +35,8 @@ export class PlacesAutocompleteComponent implements AfterViewInit, OnInit {
     this.googleMapService.markers.subscribe((markers: Markers[]) => {
       this.markers = markers;
     });
-    // this.initMap();
   }
 
-  // initMap(): void {
-  //   const options = {
-  //     types: ['(cities)'],
-  //   };
-  //   const autocomplete = new google.maps.places.Autocomplete(
-  //     // this.inputEl.nativeElement as HTMLInputElement,
-  //     options
-  //   ); // Set the data fields to return when the user selects a place.
-  //   const geocoder = new google.maps.Geocoder();
-  //   if (this.place) {
-  //     autocomplete.setValues(this.place);
-  //     // this.inputEl.nativeElement.value = this.place.title;
-  //   }
-  //   autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
-  //   autocomplete.addListener('place_changed', () => {
-  //     const place = autocomplete.getPlace();
-  //     const lng = place.geometry.location.lng();
-  //     const lat = place.geometry.location.lat();
-  //     const title = place.address_components.reduce((name, currentValue) => {
-  //       if (name === '') { return currentValue.long_name; }
-  //       if (!name.includes(currentValue.long_name)) { return name + ', ' + currentValue.long_name; }
-  //       return name;
-  //     }, '');
-  //     const data = {
-  //       name: place.name,
-  //       title,
-  //       position: {
-  //         lat,
-  //         lng
-  //       }
-  //     };
-  //     this.addMarker(lat, lng);
-  //     this.selectedPlaces.emit({ id: this.id, data });
-  //     if (!place.geometry) {
-  //       window.alert('No details available for input: \'' + place.name + '\'');
-  //       return;
-  //     }
-  //   });
-  // }
   addMarker(lat, lng): void {
     this.markers.push({
       position: {

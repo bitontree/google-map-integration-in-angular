@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,8 +13,7 @@ import { MultipleDestinationComponent } from './multiple-destination/multiple-de
 import { HttpClientModule } from '@angular/common/http';
 import { PlacesAutocompleteComponent } from './multiple-destination/places-autocomplete/places-autocomplete.component';
 import { MaterialModule } from './material.module';
-import { environment } from '../environments/environment';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +25,6 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleApiKey
-    }),
     GoogleMapsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -41,6 +36,5 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
   providers: [GoogleMapService, WizardService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
-
 })
 export class AppModule { }
