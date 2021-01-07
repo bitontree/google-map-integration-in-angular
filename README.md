@@ -42,38 +42,3 @@ npm i ngx-google-places-autocomplete
 For material module
 npm i @angular/material
 
-## App folder structure
-
-
-├── src
-
-│   ├── app
-
-│   │   ├── google-map 
-
-│   │   │   ├── google-map.component.ts
-│   │   │   ├── google-map.component.html
-│   │   │   ├── google-map.component.scss
-│   │   │   ├── google-map.service.ts
-│   │   │   ├── google-map.interface.ts
-
-│   │   ├── multiple-destination
-
-│   │   │   ├── places-autocomplete 
-
-│   │   │   │   ├── places-autocomplete.component.ts
-│   │   │   │   ├── places-autocomplete.component.html
-│   │   │   │   ├── places-autocomplete.component.scss
-
-│   │   │   ├── multiple-destination.component.ts
-│   │   │   ├── multiple-destination.component.html
-│   │   │   ├── multiple-destination.component.scss
-
-│   │   ├── app-routing.module.ts
-│   │   ├── app.component.ts
-│   │   ├── app.component.html
-│   │   ├── app.component.scss
-│   │   ├── app.module.ts
-│   │   ├── material.module.ts
-│   │   ├── wizard.service.ts
-
